@@ -1,18 +1,19 @@
-<div class="col-md-6 offset-md-3">
-    <h1>Angular Bot</h1>
-<ng-container *ngFor="let message of messages | async">
-    <div class="message" [ngStyle]="getStyle()" [ngClass]="{'from': message.sentBy ==='bot',
-                                      'to': message.sentBy === 'user'}">
-    
-    {{message.content}}
-    </div>
-    <br>
-</ng-container>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color:blanchedalmond;">Angular Bot</a>
+  </nav>    
+  <div class="container"><br>
+    <div class="col-md-6 offset-md-3">
 
-<label for="nameField">Your Message</label><br>
+        <ng-container style="padding-top: 50px;" *ngFor="let message of messages | async">
+            <div class="message" [ngStyle]="getStyle()">
+            {{message.content}}
+            </div>
+            <br>
+        </ng-container>
+        
+        <input [(ngModel)]="formValue" placeholder="Your Message..." (keyup.enter)="sendMessage()" type="text">    
+        <button class="input-group-text-btn btn-outline-primary" (click)="sendMessage()">Send</button>
+        </div> 
+  </div>
 
-<input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
-
-<button class="input-group-text-btn btn-outline-primary" (click)="sendMessage()">Send</button>
-</div>
 
